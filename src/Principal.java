@@ -1,4 +1,6 @@
+import br.com.alura.screenmatch.calculos.CalculadoraDeTempo;
 import br.com.alura.screenmatch.modelos.Filme;
+import br.com.alura.screenmatch.modelos.Serie;
 
 public class Principal {
     public static void main(String[] args){
@@ -6,12 +8,22 @@ public class Principal {
         meuFilme.setNome("O poderoso chefão");;
         meuFilme.setAnoDeLancamento(1970);
         meuFilme.setDuracaoEmMinutos(180);
-
         meuFilme.exibeFichaTecnica();
         meuFilme.avalia(10);
         meuFilme.avalia(10);
-        System.out.println(meuFilme.exibeTotalDeAvaliacoes());
 
+        System.out.println(meuFilme.exibeTotalDeAvaliacoes());
         System.out.println(meuFilme.pegaMedia());
+
+        Serie serie = new Serie();
+        serie.setNome("La casa de Papel");
+        serie.setEpisodiosPorTemporada(10);
+        serie.setMinutosPorEpisodio(40);
+        serie.setTemporadas(5);
+
+        CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
+        calculadora.inclui(meuFilme);
+        calculadora.inclui(serie);
+        System.out.println(calculadora.getTempoTotal());
     }
 }
