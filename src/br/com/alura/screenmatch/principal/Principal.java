@@ -1,3 +1,5 @@
+package br.com.alura.screenmatch.principal;
+
 import br.com.alura.screenmatch.calculos.CalculadoraDeTempo;
 import br.com.alura.screenmatch.calculos.FiltroRecomendacao;
 import br.com.alura.screenmatch.modelos.Episodio;
@@ -8,9 +10,7 @@ import java.util.ArrayList;
 
 public class Principal {
     public static void main(String[] args){
-        Filme meuFilme = new Filme();
-        meuFilme.setNome("O poderoso chefão");;
-        meuFilme.setAnoDeLancamento(1970);
+        Filme meuFilme = new Filme("O poderoso chefão", 1970);
         meuFilme.setDuracaoEmMinutos(180);
         meuFilme.exibeFichaTecnica();
         meuFilme.avalia(10);
@@ -19,8 +19,7 @@ public class Principal {
         System.out.println(meuFilme.exibeTotalDeAvaliacoes());
         System.out.println(meuFilme.pegaMedia());
 
-        Serie serie = new Serie();
-        serie.setNome("La casa de Papel");
+            Serie serie = new Serie("La casa de papel", 2022);
         serie.setEpisodiosPorTemporada(10);
         serie.setMinutosPorEpisodio(40);
         serie.setTemporadas(5);
@@ -39,8 +38,7 @@ public class Principal {
         episodio.setTotalVisualizacoes(102);
         filtro.filtra(episodio);
 
-        var filmeDoPaulo = new Filme();
-        filmeDoPaulo.setNome("Dogville");
+        var filmeDoPaulo = new Filme("Dogville", 2012);
         filmeDoPaulo.setAnoDeLancamento(2003);
         filmeDoPaulo.setDuracaoEmMinutos(200);
         filmeDoPaulo.avalia(10);
