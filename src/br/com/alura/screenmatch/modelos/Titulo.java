@@ -1,7 +1,12 @@
 package br.com.alura.screenmatch.modelos;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Titulo implements Comparable<Titulo> {
+    //@SerializedName faz o codigo interpretar essa variavel como valor tal lá no json, exemplo: variavel nome equivale a Title no Json.
+    @SerializedName("Title")
     private String nome;
+    @SerializedName("Year")
     private int anoDeLancamento;
     private boolean incluidoNoPlano;
     private double somaDeAvaliacoes;
@@ -11,6 +16,12 @@ public class Titulo implements Comparable<Titulo> {
     public Titulo(String nome, int anoDeLancamento) {
         this.nome = nome;
         this.anoDeLancamento = anoDeLancamento;
+    }
+
+    public Titulo(TituloOmdb meuTituloOmdb) {
+        this.nome = meuTituloOmdb.title();
+        this.anoDeLancamento = Integer.valueOf(meuTituloOmdb.year());
+        this.duracaoEmMinutos = Integer.valueOf(meuTituloOmdb.runtime().substring(0,2));
     }
 
     public int exibeTotalDeAvaliacoes(){
@@ -65,4 +76,8 @@ public class Titulo implements Comparable<Titulo> {
         return this.getNome().compareTo(outroTitulo.getNome());
     }
 
+    @Override
+    public String toString() {
+        return "Titulo: " + getNome() + "\nAno de Lançamento: " + getAnoDeLancamento() + "\nTempo em minutos: " + getDuracaoEmMinutos();
+    }
 }
